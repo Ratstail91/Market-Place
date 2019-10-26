@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = props => {
-	return (
-		<p>Hello world</p>
-	);
-}
+import { AppProvider } from './context.jsx';
+import reducers from './reducers/reducers.js';
+
+import App from './app.jsx';
 
 //start the process
 ReactDOM.render(
-	<App />,
+	<AppProvider initialState={ reducers({}, {type: null}) } reducer={reducers}>
+		<App />
+	</AppProvider>,
 	document.querySelector("#root")
 );
